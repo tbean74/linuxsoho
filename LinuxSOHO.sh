@@ -2028,13 +2028,13 @@ if [ ! -f /etc/postfix/main.cf.orig ]; then
   cp /etc/postfix/main.cf /etc/postfix/main.cf.orig
 fi
 cat > /etc/postfix/main.cf << EOF.main.cf
+myorigin = $mydomain
 myhostname = $FQDN
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 mydestination = \$myhostname, localhost.\$mydomain, localhost
 inet_interfaces = $LAN_IP_ADDRESS
 mynetworks = 127.0.0.0/8 $LAN_NETWORK_ADDRESS/$CIDR
-mailbox_size_limit = 51200000
 recipient_delimiter = +
 EOF.main.cf
 
