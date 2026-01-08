@@ -281,6 +281,10 @@ net.ipv4.conf.all.accept_redirects = 0
 EOF.sysctl.conf
 sysctl -p /etc/sysctl.conf
 
+# Configure Logwatch.
+mkdir -p /var/cache/logwatch
+cp /usr/share/logwatch/default.conf/logwatch.conf /etc/logwatch/conf
+
 # Temporarily deactivate the Debconf frontend.
 export DEBIAN_FRONTEND=noninteractive
 
@@ -326,7 +330,7 @@ SHOREWALL="shorewall shorewall-doc shorewall-init"
 SNORT="oinkmaster snort snort-doc"
 SOURCE_CODE_DEPENDS="git gcc make subversion"
 SQUIDCLAMAV_DEPENDS="libicapapi-dev libssl-dev libtimedate-perl"
-SYSTEM_DEPENDS="apt-utils dkms expect openssh-server vim-scripts"
+SYSTEM_DEPENDS="apt-utils dkms expect logwatch openssh-server vim-scripts"
 WEBMIN="at cups mdadm quota quotatool sarg stunnel4 usermin webalizer webmin wodim"
 
 SOFTWARE_PACKAGES="$APACHE $APPARMOR $BIND $CHRONY $CLAMAV $CUPS $DDCLIENT \
